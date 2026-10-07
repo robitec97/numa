@@ -1,0 +1,44 @@
+{
+  "windows": {
+    "A (piu' vecchia)": {
+      "period": "2015-12-24 -> 2019-10-22",
+      "hits": {
+        "caso (uniforme)": 236,
+        "freq. storica globale": 250,
+        "numeri caldi (freq. ultime 50)": 241,
+        "ritardatari (gap massimo)": 234,
+        "regressione logistica": 228,
+        "gradient boosting": 233
+      }
+    },
+    "B (intermedia)": {
+      "period": "2019-10-24 -> 2023-09-09",
+      "hits": {
+        "caso (uniforme)": 247,
+        "freq. storica globale": 228,
+        "numeri caldi (freq. ultime 50)": 229,
+        "ritardatari (gap massimo)": 247,
+        "regressione logistica": 245,
+        "gradient boosting": 249
+      }
+    },
+    "C (originale)": {
+      "period": "2023-09-12 -> 2026-07-30",
+      "hits": {
+        "caso (uniforme)": 236,
+        "freq. storica globale": 250,
+        "numeri caldi (freq. ultime 50)": 230,
+        "ritardatari (gap massimo)": 230,
+        "regressione logistica": 254,
+        "gradient boosting": 276
+      }
+    }
+  },
+  "gbm_seeds": {
+    "1": 253,
+    "7": 247,
+    "42": 276,
+    "99": 270,
+    "2026": 246
+  }
+}

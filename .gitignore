@@ -1,0 +1,11 @@
+# ambienti Python (il .nosync resta fuori anche da iCloud)
+.venv/
+.venv.nosync/
+__pycache__/
+*.pyc
+*.tmp
+.DS_Store
+results/*.log
+
+# foto originale di Pompilio: resta privata, il sito usa solo il disegno
+numa.png

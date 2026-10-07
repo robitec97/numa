@@ -1,0 +1,7 @@
+# Quanto serve per il sito e l'automazione (senza PyTorch e matplotlib).
+numpy
+pandas
+scikit-learn>=1.7,<2
+threadpoolctl
+scipy
+requests

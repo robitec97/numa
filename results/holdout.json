@@ -1,0 +1,116 @@
+{
+  "started_utc": "2026-10-07T20:19:58.354770+00:00",
+  "protocol_sha256": "11159503b017dce11017031fcc87d8af498f8c6047f45fdee12576d627ac1017",
+  "runner_sha256": "4e2772bcc8413d20b185250bb19b1595d28d66a014e945e42947c5e63cf730e7",
+  "cutoff": "2026-07-30",
+  "status": "evaluated",
+  "note": "Controllo su estrazioni pubblicate dopo il cutoff storico, scaricate dopo aver fissato il modello. Non e' un test prospettico preregistrato; eventuali repliche sugli stessi dati non sono nuove conferme.",
+  "inserted_before_cutoff": [
+    "2026-06-08"
+  ],
+  "history_used": "storico congelato fino al cutoff + estrazioni nuove successive",
+  "draws": 39,
+  "snapshot_sha256": "87090e43133d9e27e0bfdeee823286cf9f0c9662eb092b1b01e92b2d59851e3c",
+  "period": [
+    "2026-07-31",
+    "2026-10-06"
+  ],
+  "models": {
+    "caso (uniforme)": {
+      "draws": 39,
+      "total_hits": 16,
+      "hits_per_draw": 0.41025641025641024,
+      "expected_hits": 15.600000000000001,
+      "p_chance_ge_exact": 0.4968646613232055,
+      "logloss": 0.2449300267946355,
+      "brier": 0.06222222222222223,
+      "hit_counts": [
+        27,
+        8,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "gradient boosting": {
+      "draws": 39,
+      "total_hits": 13,
+      "hits_per_draw": 0.3333333333333333,
+      "expected_hits": 15.600000000000001,
+      "p_chance_ge_exact": 0.7956842270146174,
+      "logloss": 0.2452240483837071,
+      "brier": 0.062258771705531506,
+      "hit_counts": [
+        29,
+        7,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "p_holm_2": 0.993729322646411
+    },
+    "ensemble temporale calibrato": {
+      "draws": 39,
+      "total_hits": 16,
+      "hits_per_draw": 0.41025641025641024,
+      "expected_hits": 15.600000000000001,
+      "p_chance_ge_exact": 0.4968646613232055,
+      "logloss": 0.2449300267946355,
+      "brier": 0.06222222222222223,
+      "hit_counts": [
+        27,
+        8,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "p_holm_2": 0.993729322646411
+    }
+  },
+  "challenger_fits": [
+    {
+      "seen_draws": 4239,
+      "train_end": 3879,
+      "validation_end": 4119,
+      "weight": 0.0,
+      "iterations": [
+        10,
+        18,
+        13
+      ],
+      "calibration_logloss": [
+        0.24493002679463544,
+        0.24493132483456176,
+        0.24493374537678658,
+        0.24493904145520626,
+        0.24494591391916637,
+        0.24495436219000802
+      ]
+    },
+    {
+      "seen_draws": 4269,
+      "train_end": 3909,
+      "validation_end": 4149,
+      "weight": 0.0,
+      "iterations": [
+        18,
+        10,
+        10
+      ],
+      "calibration_logloss": [
+        0.24493002679463544,
+        0.24493391971937584,
+        0.24494029867872866,
+        0.24495236664389916,
+        0.2449662265540404,
+        0.24498187508451771
+      ]
+    }
+  ]
+}

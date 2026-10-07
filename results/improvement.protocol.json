@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-09-05T14:59:12.299564+00:00",
+  "status": "exploratory_retrospective",
+  "history_end": "2026-07-30",
+  "window_draws": 600,
+  "windows": 3,
+  "retrain_every": 30,
+  "tie_seed": 123,
+  "challenger": {
+    "seeds": [
+      1,
+      7,
+      42
+    ],
+    "validation_draws": 240,
+    "calibration_draws": 120,
+    "max_iter": 150,
+    "weights": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ]
+  },
+  "primary_metric": "pooled logloss difference vs uniform (negative is better)",
+  "secondary_metric": "top-6 hits; exact upper tail under independent uniform draws",
+  "limitations": "Finestre gia' esaminate nel progetto: nessun risultato costituisce conferma su dati nuovi. IC bootstrap approssimati, nessuna garanzia di profitto.",
+  "data_path": "/Users/robitec/Desktop/Projects/numa/data/superenalotto_full.txt",
+  "evaluated_data_sha256": "713ceab7d9ee1cd154281a141d981644d5aaa598996d37bf6dfd163dfcf3f6cc",
+  "source_sha256": {
+    "src/robust.py": "875043bb97f45aa4c98b28caadbfc3dae7c7a4a8c6acfa83ff18da909cc51b0c",
+    "src/models.py": "50ce10046a8ae22187671b500751433e7341c9fd61c84531045d0e762d748a6a",
+    "src/features.py": "154f152c1cab111881b06c2d8f4d8749e5891e7f9b5f72d5fcd4e0bbf83ac9b2",
+    "src/backtest.py": "36845078cbdac006e33b4f99ff743240e86573c056966164448e1c5a00128bd5",
+    "src/data.py": "0333dfdd38ef352cea9bbe66004679493588a37e270b4edad8a984d0ea85197b",
+    "src/inference.py": "528d482f1eb17a04e124122dce287f9421db702fd4ba925920a38e22cc4a0a43",
+    "run_improvement.py": "ce5cd2fd983d82783b09748e2480de747b8c8148df6bae9c93c0ab41f4197da8"
+  },
+  "versions": {
+    "python": "3.13.12",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.0"
+  }
+}

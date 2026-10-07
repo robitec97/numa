@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>numa · SuperEnalotto onesto</title>
+  <meta name="description" content="I numeri di Numa per il prossimo concorso del SuperEnalotto: sestine poco giocate, registrate prima dell'estrazione e verificate dopo. Con statistiche, verifiche e niente promesse.">
+  <meta name="theme-color" content="#22304d">
+  <meta property="og:title" content="numa · i numeri di Numa">
+  <meta property="og:description" content="Nessuno può prevedere il SuperEnalotto. Numa sceglie i numeri che gli altri non giocano: se vinci, dividi con meno persone.">
+  <meta property="og:image" content="assets/og.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    try { const t = localStorage.getItem("numa-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#numeri" aria-label="numa, torna su">
+      <img src="assets/favicon.svg" alt="" width="40" height="40">
+      <span>numa</span>
+    </a>
+    <nav aria-label="Sezioni">
+      <a href="#numeri">Numeri</a>
+      <a href="#classifica">Classifica</a>
+      <a href="#controlla">Controlla</a>
+      <a href="#statistiche">Statistiche</a>
+      <a href="#metodo">Metodo</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="numeri" class="hero">
+      <div class="hero-text">
+        <p class="eyebrow"><span id="next-label">Prossimo concorso</span> <span class="chip" id="countdown" hidden></span></p>
+        <h1>I numeri di Numa</h1>
+        <div class="balls balls--hero" id="hero-balls" aria-live="polite"></div>
+        <p class="registered" id="registered"></p>
+        <div class="actions">
+          <button class="btn btn--primary" id="btn-generate" type="button">Genera altre sestine</button>
+          <button class="btn" id="btn-copy" type="button">Copia i numeri</button>
+          <label class="select">colonne
+            <select id="n-columns" aria-label="Quante sestine generare">
+              <option>1</option><option selected>3</option><option>5</option><option>10</option>
+            </select>
+          </label>
+        </div>
+        <div class="generated" id="generated" aria-live="polite"></div>
+        <p class="honest">
+          Ogni sestina ha la stessa probabilità di fare 6: <strong>1 su 622.614.630</strong>.
+          Numa non la cambia, sceglie numeri che gli altri giocano poco: se escono,
+          il premio si divide tra meno persone.
+        </p>
+      </div>
+      <figure class="mascot">
+        <div class="bubble" id="bubble" role="status" tabindex="0" title="Clicca per un altro consiglio">
+          Ciao, sono Numa!
+        </div>
+        <div class="medallion">
+          <img src="assets/numa.svg" alt="Numa, la mascotte: un signore sorridente con occhiali senza montatura, barba bianca e giacca blu" width="400" height="470">
+        </div>
+        <figcaption>Numa, disegnato a partire da una foto di Pompilio</figcaption>
+      </figure>
+    </section>
+
+    <!-- LE SESTINE DI TUTTE LE STRATEGIE -->
+    <section class="card" id="strategie">
+      <div class="section-head">
+        <h2>Tutte le sestine registrate per questo concorso</h2>
+        <p>Sei strategie, dalle più ingenue al machine learning. Sono salvate nel
+          <a href="data/ledger.json">registro pubblico</a> prima della chiusura delle giocate
+          e verificate dopo l'estrazione.</p>
+      </div>
+      <div class="strategy-list" id="strategy-list"></div>
+    </section>
+
+    <!-- ULTIMA ESTRAZIONE -->
+    <section class="card" id="ultima">
+      <div class="section-head">
+        <h2>Ultima estrazione</h2>
+        <p id="last-label"></p>
+      </div>
+      <div class="last-grid">
+        <div>
+          <div class="balls" id="last-balls"></div>
+          <p class="last-pop" id="last-pop"></p>
+          <div class="fresh" id="fresh" hidden></div>
+        </div>
+        <table class="prizes" id="last-prizes" aria-label="Premi per una colonna vincente"></table>
+      </div>
+      <div class="recent" id="recent"></div>
+    </section>
+
+    <!-- CLASSIFICA -->
+    <section class="card" id="classifica">
+      <div class="section-head">
+        <h2>La classifica onesta</h2>
+        <p>Previsioni registrate <em>prima</em> di ogni concorso, verificate <em>dopo</em>.
+          Una sestina a caso fa in media 0,4 punti a concorso: battere il caso vuol dire
+          stare sopra lo zero, ma <span id="power-note"></span></p>
+      </div>
+      <div class="table-wrap"><table class="board" id="board"></table></div>
+      <div class="chart" id="chart-cumulative" aria-label="Punti in più o in meno rispetto al caso, concorso dopo concorso"></div>
+
+      <h3>E nel passato?</h3>
+      <div class="two-col">
+        <div>
+          <p class="small" id="retro-note"></p>
+          <div class="chart" id="chart-retro"></div>
+        </div>
+        <div class="callout" id="holdout-note"></div>
+      </div>
+    </section>
+
+    <!-- POPOLARITA' -->
+    <section class="card" id="impopolari">
+      <div class="section-head">
+        <h2>Perché Numa sceglie numeri poco giocati</h2>
+        <p>I premi di 2, 3, 4 e 5 punti sono un fondo fisso diviso tra tutti i vincitori.
+          Dal numero di vincitori di ogni concorso si vede quanto erano giocati i numeri usciti:
+          il 9, l'11 e i numeri fino al 12 (i mesi) sono i preferiti degli italiani.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="schedina schedina--heat" id="heat" aria-label="Quanto è giocato ogni numero"></div>
+          <div class="legend-ramp">
+            <span>poco giocato</span><i class="ramp"></i><span>molto giocato</span>
+          </div>
+        </div>
+        <div>
+          <div class="stats-tiles" id="pop-tiles"></div>
+          <div class="chart" id="chart-pop"></div>
+          <p class="small" id="pop-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLLA -->
+    <section class="card" id="controlla">
+      <div class="section-head">
+        <h2>Controlla i tuoi numeri</h2>
+        <p>Scegli 6 numeri: Numa ti dice quanto sono giocati dagli altri e cosa avrebbero
+          fatto in tutti i concorsi dal 1997.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="schedina schedina--pick" id="picker" role="group" aria-label="Scegli 6 numeri"></div>
+          <div class="actions">
+            <button class="btn" id="pick-random" type="button">A caso</button>
+            <button class="btn" id="pick-numa" type="button">Come Numa</button>
+            <button class="btn btn--ghost" id="pick-clear" type="button">Cancella</button>
+          </div>
+        </div>
+        <div class="check-result" id="check-result" aria-live="polite">
+          <p class="muted">Seleziona 6 numeri sulla schedina.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICHE -->
+    <section class="card" id="statistiche">
+      <div class="section-head">
+        <h2>Statistiche per curiosi</h2>
+        <p id="stats-intro"></p>
+      </div>
+      <h3>Quante volte è uscito ogni numero</h3>
+      <div class="chart" id="chart-freq"></div>
+      <div class="two-col">
+        <div>
+          <h3>I ritardatari di oggi</h3>
+          <ol class="late" id="late"></ol>
+        </div>
+        <div>
+          <h3>Il ritardo non conta</h3>
+          <p class="small">Probabilità che un numero esca, sapendo che manca da almeno <em>g</em> concorsi.
+            Se i ritardatari "dovessero" uscire, i punti salirebbero verso destra.</p>
+          <div class="chart" id="chart-gap"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODO -->
+    <section class="card" id="metodo">
+      <div class="section-head">
+        <h2>Il metodo, in breve</h2>
+      </div>
+      <div class="method" id="method"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="dedication">
+      <img src="assets/favicon.svg" alt="" width="56" height="56">
+      <p>numa è dedicato a <strong>Pompilio</strong>, con affetto.</p>
+    </div>
+    <p class="small">
+      Il gioco è vietato ai minori e può causare dipendenza patologica. Gioca solo quello che puoi
+      permetterti di perdere. Telefono Verde Nazionale per le problematiche legate al gioco
+      d'azzardo (Istituto Superiore di Sanità): <a href="tel:800558822">800 558 822</a>.
+    </p>
+    <p class="small muted" id="sources"></p>
+    <p class="small muted">numa è un progetto personale e didattico, non affiliato a Sisal né all'Agenzia delle Dogane e dei Monopoli.</p>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>

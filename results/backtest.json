@@ -1,0 +1,119 @@
+{
+  "eval_draws": 600,
+  "eval_period": [
+    "2023-09-12",
+    "2026-07-30"
+  ],
+  "expected_hits_chance": 240.0,
+  "mc_std": 14.526567695088884,
+  "models": {
+    "caso (uniforme)": {
+      "total_hits": 236,
+      "hits_per_draw": 0.3933333333333333,
+      "p_beats_chance": 0.618675,
+      "p_worse_than_chance": 0.407665,
+      "logloss": 0.24493002679463538,
+      "brier": 0.06222222222222223,
+      "balance_eur": -455.0,
+      "hit_counts": [
+        390,
+        185,
+        24,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "freq. storica globale": {
+      "total_hits": 250,
+      "hits_per_draw": 0.4166666666666667,
+      "p_beats_chance": 0.254825,
+      "p_worse_than_chance": 0.766665,
+      "logloss": 0.24504952719909834,
+      "brier": 0.06223667632250678,
+      "balance_eur": -325.0,
+      "hit_counts": [
+        396,
+        161,
+        40,
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    "numeri caldi (freq. ultime 50)": {
+      "total_hits": 230,
+      "hits_per_draw": 0.38333333333333336,
+      "p_beats_chance": 0.76204,
+      "p_worse_than_chance": 0.2595,
+      "logloss": 0.2757936133877959,
+      "brier": 0.06342750555131721,
+      "balance_eur": -410.0,
+      "hit_counts": [
+        399,
+        175,
+        23,
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    "ritardatari (gap massimo)": {
+      "total_hits": 230,
+      "hits_per_draw": 0.38333333333333336,
+      "p_beats_chance": 0.76204,
+      "p_worse_than_chance": 0.2595,
+      "logloss": 0.2508842800129996,
+      "brier": 0.06283091970830877,
+      "balance_eur": -470.0,
+      "hit_counts": [
+        393,
+        185,
+        21,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "regressione logistica": {
+      "total_hits": 254,
+      "hits_per_draw": 0.42333333333333334,
+      "p_beats_chance": 0.17539,
+      "p_worse_than_chance": 0.84101,
+      "logloss": 0.24494954827645438,
+      "brier": 0.06222453221156195,
+      "balance_eur": -330.0,
+      "hit_counts": [
+        391,
+        167,
+        39,
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    "gradient boosting": {
+      "total_hits": 276,
+      "hits_per_draw": 0.46,
+      "p_beats_chance": 0.008085,
+      "p_worse_than_chance": 0.993275,
+      "logloss": 0.24490951833143895,
+      "brier": 0.06221917143079726,
+      "balance_eur": -285.0,
+      "hit_counts": [
+        372,
+        185,
+        38,
+        5,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}
