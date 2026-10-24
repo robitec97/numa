@@ -1057,7 +1057,102 @@
    "superstar_hint": 57,
    "created_utc": "2026-10-23T22:38:14+00:00",
    "prev": "aa4da9021ae061aa337abe623d9530082f7b253267d082960fc889a3b5127d14",
-   "hash": "d7c31d30c5eb112234dd4928faff2fc78d71981e9277847b106afe5c01626938"
+   "hash": "d7c31d30c5eb112234dd4928faff2fc78d71981e9277847b106afe5c01626938",
+   "result": {
+    "date": "2026-10-24",
+    "numbers": [
+     11,
+     17,
+     32,
+     50,
+     73,
+     80
+    ],
+    "jolly": 62,
+    "superstar": 24,
+    "hits": {
+     "numa": 0,
+     "ensemble": 1,
+     "gbm": 0,
+     "caldi": 0,
+     "ritardatari": 0,
+     "caso": 0
+    },
+    "prize": {
+     "numa": 0.0,
+     "ensemble": 0.0,
+     "gbm": 0.0,
+     "caldi": 0.0,
+     "ritardatari": 0.0,
+     "caso": 0.0
+    }
+   }
+  },
+  {
+   "target_date": "2026-10-27",
+   "sales_close": "2026-10-27T18:30:00+00:00",
+   "history_end": "2026-10-24",
+   "history_draws": 4290,
+   "data_sha256": "0336edac1b462ac482346009f6b59800be38754c494b96815d1fa0839f6bd625",
+   "code_version": "fd78e7b1f9829183",
+   "picks": {
+    "numa": [
+     28,
+     32,
+     36,
+     42,
+     60,
+     61
+    ],
+    "ensemble": [
+     15,
+     38,
+     52,
+     59,
+     62,
+     76
+    ],
+    "gbm": [
+     63,
+     68,
+     79,
+     85,
+     88,
+     90
+    ],
+    "caldi": [
+     2,
+     12,
+     16,
+     18,
+     28,
+     41
+    ],
+    "ritardatari": [
+     9,
+     19,
+     58,
+     87,
+     88,
+     90
+    ],
+    "caso": [
+     10,
+     26,
+     28,
+     30,
+     41,
+     65
+    ]
+   },
+   "info": {
+    "numa_popularity": -0.7852,
+    "ensemble_weight": 0.0
+   },
+   "superstar_hint": 87,
+   "created_utc": "2026-10-24T21:53:04+00:00",
+   "prev": "d7c31d30c5eb112234dd4928faff2fc78d71981e9277847b106afe5c01626938",
+   "hash": "46247913100cda1ff274920037662ffac34cdfdafa721f58322b28ded0515254"
   }
  ]
 }
